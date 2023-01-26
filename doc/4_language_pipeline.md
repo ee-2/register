@@ -1,6 +1,6 @@
 # Language and Pipeline
 
-**register** builds on [spaCy](https://spacy.io/). Thus it supports all languages supported by spaCy at least for basic feature packages (e.g. [word n-grams](2_1_2_word_lemma_ngrams.md), [character n-grams](2_1_1_character_ngrams.md) or [orthography](2_2_1_orthography.md)). Several other feature packages depend on the trained pipeline and its components provided by spaCy for a specific language (e.g. [pos n-grams](2_1_3_pos_ngrams.md) needs a tagger). For supported languages and provided pipeline components see spaCy's documentation on its [models](https://spacy.io/usage/models).
+**register** builds on [spaCy](https://spacy.io/). Thus it supports all languages supported by spaCy at least for basic feature packages (e.g. [word n-grams](2_1_2_word_lemma_ngrams.md), [character n-grams](2_1_1_character_ngrams.md) or [orthography](2_2_1_orthography.md)). Several other feature packages depend on the trained pipeline and its components provided by spaCy for a specific language (e.g. pos n-grams need a tagger). For supported languages and provided pipeline components see spaCy's documentation on its [models](https://spacy.io/usage/models).
 Mind, that special feature packages may be only implemented for some languages (e.g. formality for German). See the documenation on the specific [feature packages](1_basic_configurations.md/## Feature Packages) for further information.
 
 You can compare corpora from different languages with **register**, but keep in mind that this may be not meaningful for all feature packages, i.e, comparing different language corpora using word n-grams or named entities based on different label schemes will not result in informative results. 
@@ -38,9 +38,9 @@ Configuration example:
 
 ## Costum Pipeline Components
 
-Define custom spacy pipeline components (tokenizer, tagger, parser, ner, ...) in the [custom_pipeline_components package](src/utils/custom_pipeline_components). They must be accessible in the [__init__.py](src/utils/custom_pipeline_components/__init__.py). The tokenizer must be accessible via the function "custom\_tokenizer", which takes the spaCy pipeline as parameter. All other pipeline components must be registered via the @Language.component or @Language.factory decorator under the name "custom\_" + pipeline component name (e.g. custom\_tagger).
+Define custom spacy pipeline components (tokenizer, tagger, parser, ner, ...) in the [custom_pipeline_components package](../src/utils/custom_pipeline_components). They must be accessible in the [__init__.py](../src/utils/custom_pipeline_components/__init__.py). The tokenizer must be accessible via the function "custom\_tokenizer", which takes the spaCy pipeline as parameter. All other pipeline components must be registered via the @Language.component or @Language.factory decorator under the name "custom\_" + pipeline component name (e.g. custom\_tagger).
 
-Examples for [__init__.py](src/utils/custom_pipeline_components/__init__.py):
+Examples for [__init__.py](../src/utils/custom_pipeline_components/__init__.py):
 ````
 from spacy.tokenizer import Tokenizer
 from spacy.language import Language

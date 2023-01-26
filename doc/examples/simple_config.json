@@ -1,0 +1,17 @@
+{
+	"mode":"cluster",
+	"corpora":
+		[
+			{
+				"path": "corpora",
+				"language":"de"
+			}
+		],
+	"feature_packages": 
+		[
+			{
+				"feature_package":"orthography"
+			}
+		]
+
+}

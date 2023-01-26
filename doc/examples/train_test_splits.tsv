@@ -1,0 +1,11 @@
+id	fold_0	fold_1	fold_2	fold_3	fold_4
+file_0.txt	train	train	train	train	test
+file_1.txt	train	train	train	train	test
+file_2.txt	train	train	train	test	train
+file_3.txt	train	train	train	test	train
+file_4.txt	train	train	test	train	train
+file_5.txt	train	train	test	train	train
+file_6.txt	train	test	train	train	train
+file_7.txt	train	test	train	train	train
+file_8.txt	test	train	train	train	train
+file_9.txt	test	train	train	train	train

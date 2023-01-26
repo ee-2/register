@@ -1,0 +1,60 @@
+{
+	"mode":"train_classifier",
+	"models":[	
+
+			{	"model": "LogisticRegression",
+				"lib": "sklearn"
+			},
+			{	"model": "NeuralClassifier",
+				"lib": "tf_keras",
+				"hidden_layer_dimensions":[256,128]
+			}
+
+	],
+    "corpora": [
+
+        {
+            "name": "texts_from_chats",
+            "path": "/path/to/corpus",
+            "language": "de",
+            "status": "text",
+            "class":"chats"
+        },
+        {
+            "name": "texts_from_news",
+            "path": "/path/to/corpus",
+            "language": "de",
+            "status": "text",
+            "class":"news"
+        }
+    ],
+    "base_dir": "/path/for/output",
+    "feature_packages" : [
+								{
+									"feature_package": "token_ngrams",
+									"name": "token_bi",
+									"n": 2, 
+									"exclude_spacy_attribs":["is_stop"],
+									"spacy_attrib":"text",
+									"vectorizer":    {
+										                "name":"CountVectorizer",
+										                "binary": true
+										            }  
+								},
+								{
+									"feature_package": "token_ngrams",
+									"name": "lemma_uni",
+									"scaler":        {
+										                "name": "StandardScaler"
+										             }       
+								},
+								{
+									"feature_package": "embeddings"
+								},
+								{
+									"feature_package": "emotion",
+									"features": ["polarity"]         
+								},
+    
+						  ]
+}

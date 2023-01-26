@@ -1,0 +1,21 @@
+{
+	"mode":"analyze",
+    "corpora": [
+
+        {
+            "name": "German_texts",
+            "path": "path/to/corpus",
+            "language": "de"
+        },
+        {
+            "name": "English_texts",
+            "path": "path/to/corpus",
+            "language": "en"
+        }       
+    ],
+    "feature_packages" : [
+        {
+            "feature_package": "metrics"
+        }
+    ]
+}

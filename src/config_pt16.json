@@ -1,0 +1,125 @@
+{
+	"mode":"train_linear_regressor",
+	"models":[
+
+				{	"model": "Ridge",
+					"lib": "sklearn"
+				}
+
+	         ],
+    "corpora": [
+        {
+            "language": "de",
+            "name": "InFormalSentences",
+            "path": "path/to/in_formal_sentences.tsv",
+            "path_targets": "path/to/in_formal_sentences.tsv"
+        }       
+    ],
+    "base_dir": "../../pt16_output",
+    "feature_packages" :
+    	[             
+            {
+                "feature_package": "token_ngrams",
+                "name": "pos",
+                "spacy_attrib":"tag_",
+                "vectorizer": {
+                               "name": "TfidfVectorizer",
+							   "use_idf":false,
+							   "norm": "l1"
+                              }
+            },  
+            {
+                "feature_package": "token_ngrams",
+                "name": "token_uni",
+                "spacy_attrib":"text",
+                "vectorizer":    {
+                                    "name":"CountVectorizer",
+                                    "binary": true
+                                 }
+            },  
+            {
+                "feature_package": "token_ngrams",
+                "name": "token_bi",
+                "spacy_attrib":"text",
+                "n" : 2,
+                "vectorizer":    {
+                                    "name":"CountVectorizer",
+                                    "binary": true
+                                 }
+            },
+            {
+                "feature_package": "token_ngrams",
+                "name": "token_tri",
+                "spacy_attrib":"text",
+                "n" : 3,
+                "vectorizer":    {
+                                    "name":"CountVectorizer",
+                                    "binary": true
+                                 }
+            },
+            {
+                "feature_package": "span_ngrams",
+                "name": "entities_uni",
+                "vectorizer":    {
+                                    "name":"CountVectorizer",
+                                    "binary": true
+                                 }
+            },
+	        {
+	            "feature_package": "syntax",
+                "name": "dependency",
+                "vectorizer":    {
+                                    "name":"CountVectorizer",
+                                    "binary": true
+                                 }
+            },    
+             {
+                "feature_package": "syntax",
+                "name": "constituency",
+                "grammar": "constituency",
+                "vectorizer": {
+                               "name": "TfidfVectorizer",
+							   "use_idf":false,
+							   "norm": "l1"
+                              }
+            },  
+		    {
+		        "doc_embeddings": "DocumentPoolEmbeddings",
+		        "embeddings": {
+		            "TransformerWordEmbeddings": {
+		                "fine_tune": false,
+		                "model": "deepset/gbert-base"
+		            }
+		        },
+		        "feature_package": "embeddings",
+		        "name": "embeddings"
+		    },
+ 	        {
+	            "feature_package": "metrics",
+	            "features": ["avg_token_length", 
+	            			 "avg_sentence_length_tokens", 
+	            			 "avg_sentence_length_characters",
+	            			 "avg_constituency_height",
+	            			 "flesch_reading_ease",
+	            			 "prop_hedge_phrases",
+	            			 "prop_first_prs_pron",
+	            			 "prop_third_prs_pron"]
+            },    
+ 	        {
+	            "feature_package": "orthography",
+	            "features": ["prop_upper",
+	            			 "prop_lower",
+	            			 "prop_title",
+	            			 "prop_punctuation",
+	            			 "prop_emo",
+	            			 "prop_contractions"]
+            },
+  	        {
+	            "feature_package": "emotion",
+	            "features" : ["polarity"]
+            },
+ 	        {
+	            "feature_package": "formality"
+            }    	       
+        ]
+}

@@ -1,0 +1,54 @@
+{
+	"mode":"train_linear_regressor",
+	"models":[
+
+				{	"model": "Ridge",
+					"lib": "sklearn"
+				}
+
+	         ],
+    "corpora": [
+        {
+            "language": "de",
+            "name": "InFormalSentences",
+            "path": "path/to/in_formal_sentences.tsv",
+            "path_targets": "path/to/in_formal_sentences.tsv"
+        }
+    ],
+    "base_dir": "../../c18_output",
+    "feature_packages" :
+    [
+            {
+                "feature_package": "span_ngrams",
+                "name": "entities_uni",
+                "vectorizer":    {
+                                    "name":"CountVectorizer",
+                                    "binary": true
+                                 }
+            },
+ 	        {
+	            "feature_package": "metrics",
+	            "features": ["avg_token_length", 
+	            			 "avg_sentence_length_tokens",
+	            			 "flesch_reading_ease",
+	            			 "prop_hedge_phrases",
+	            			 "prop_first_prs_pron",
+	            			 "prop_third_prs_pron"]
+            },
+ 	        {
+	            "feature_package": "orthography",
+	            "features": ["prop_upper",
+	            			 "prop_lower",
+	            			 "prop_title",
+	            			 "prop_punctuation",
+	            			 "prop_emo",
+	            			 "prop_contractions"]
+            },
+ 	        {
+	            "feature_package": "emotion"
+            },
+ 	        {
+	            "feature_package": "formality"
+            }
+    ]
+}

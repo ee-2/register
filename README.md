@@ -60,9 +60,13 @@ When using **register**, please cite:
     author = "Eder, Elisabeth  and
       	      Krieg-Holz, Ulrike  and
       	      Wiegand, Michael",
-    booktitle = "Findings of the Association of Computational Linguistics: EACL 2023",
+    booktitle = "Findings of the Association for Computational Linguistics: EACL 2023",
+    month = may,
+    year = "2023",
+    address = "Dubrovnik, Croatia",
     publisher = "Association for Computational Linguistics",
-    note = "to appear"
+    url = "https://aclanthology.org/2023.findings-eacl.42",
+    pages = "580--593"
 }
 ```
 

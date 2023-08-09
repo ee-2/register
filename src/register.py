@@ -134,7 +134,7 @@ class Register():
                                                  **lin_model)   
             y_pred = model.predict(model.scale_apply(x)).ravel()
             results[lin_model['model']]=y_pred
-            model.visualize_pretrained(results[['corpus_name',lin_model['model']]], self.config['base_dir'], lin_model['model']) # TODO
+            model.visualize_pretrained(results[['corpus_name',lin_model['model']]], self.config['base_dir'], lin_model['model'])
             self.featurization.visualize_features(y=results[lin_model['model']], per='score')
         print('Done.')
         return results  

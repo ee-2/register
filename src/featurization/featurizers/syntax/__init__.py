@@ -81,7 +81,6 @@ class SyntaxFeaturizer():
         list
             list with dependency tuples
         """
-        # TODO: change for publication (pt16!)
         tups = []        
         for tup in [(getattr(token.head, f'{self.config["pos"]}_'), token.dep_, getattr(token, f'{self.config["pos"]}_')) for token in doc]:
             if tup[1] == 'ROOT':

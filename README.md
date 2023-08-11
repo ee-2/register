@@ -1,6 +1,6 @@
 # **register**
 
-**register** is a toolkit for analyzing language use patterns which characterize **re**gisters, **g**enres and **st**yles. It provides a wide range of features and covers various languages (Note that not all feature packages are supported for all languages (see [doc](doc/1_basic_configurations.md))).
+**register** is a toolkit for analyzing language use patterns that characterize **re**gisters, **g**enres and **st**yles. It provides a wide range of features and covers various languages (Note that not all feature packages are supported for all languages (see [doc](doc/1_basic_configurations.md))).
 
 
 # Installation
@@ -12,7 +12,7 @@
 ```
 pip install -r requirements.txt
 ```
-3. Load the [spaCy language model](https://spacy.io/usage/models) (If your language is not supported by spaCy you can still use basic feature packages (e.g. [character n-grams](doc/2_10_character_ngrams.md) or [token n-grams](doc/2_11_token_ngrams.md))), e.g.:
+3. Load the [spaCy language model](https://spacy.io/usage/models) (If your language is not supported by spaCy, you can still use basic feature packages (e.g., [character n-grams](doc/2_10_character_ngrams.md) or [token n-grams](doc/2_11_token_ngrams.md))), e.g.:
 ```
 python -m spacy download de_core_news_sm
 ``` 

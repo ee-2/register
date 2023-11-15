@@ -213,7 +213,7 @@ class Featurization():
                             feature_package_name = '{}_{}'.format(feature_config['name'], feature)
                             self.vectorized_features[feature_package_name] = vectorizer.vectorize(x)
                             vectorizers[feature_package_name] = vectorizer.vectorizer
-                            self.feature_names[feature_package_name] = vectorizer.vectorizer.get_feature_names()
+                            self.feature_names[feature_package_name] = vectorizer.vectorizer.get_feature_names_out()
                             self.feature_names_list.extend(['{}_{}'.format(feature_package_name, feature_name) for feature_name in self.feature_names[feature_package_name]])
                             self._dump_features(feature_package_name, self.vectorized_features[feature_package_name], self.feature_names[feature_package_name])
                         else:
@@ -228,7 +228,7 @@ class Featurization():
                         vectorizer = VectorizerFrequency_sklearn(x=x, **feature_config['vectorizer'])
                         self.vectorized_features[feature_config['name']] = vectorizer.vectorize(x)
                         vectorizers[feature_config['name']] = vectorizer.vectorizer
-                        self.feature_names[feature_config['name']] = vectorizer.vectorizer.get_feature_names()
+                        self.feature_names[feature_config['name']] = vectorizer.vectorizer.get_feature_names_out()
                         self.feature_names_list.extend(['{}_{}'.format(feature_config['name'], feature_name) for feature_name in self.feature_names[feature_config['name']]])
                         self._dump_features(feature_config['name'], self.vectorized_features[feature_config['name']], self.feature_names[feature_config['name']])
                     else:
@@ -240,7 +240,7 @@ class Featurization():
                     vectorizer = VectorizerDict_sklearn(x=analysis[feature_config['name']])
                     self.vectorized_features[feature_config['name']] = vectorizer.vectorize(analysis[feature_config['name']])
                     vectorizers[feature_config['name']] = vectorizer.vectorizer
-                    self.feature_names[feature_config['name']] = vectorizer.vectorizer.get_feature_names()
+                    self.feature_names[feature_config['name']] = vectorizer.vectorizer.get_feature_names_out()
                     self.feature_names_list.extend(['{}_{}'.format(feature_config['name'], feature_name) for feature_name in self.feature_names[feature_config['name']]])
                     self._dump_features(feature_config['name'], self.vectorized_features[feature_config['name']], self.feature_names[feature_config['name']])
                 else:
@@ -285,21 +285,21 @@ class Featurization():
                         feature_package_name = '{}_{}'.format(feature_config['name'], feature)
                         vectorizer = VectorizerFrequency_sklearn(vectorizer=vectorizers[feature_package_name])
                         self.vectorized_features[feature_package_name] = vectorizer.vectorize([doc[feature] for doc in analysis[feature_config['name']]])
-                        self.feature_names[feature_package_name] = vectorizer.vectorizer.get_feature_names()
+                        self.feature_names[feature_package_name] = vectorizer.vectorizer.get_feature_names_out()
                         self.feature_names_list.extend(['{}_{}'.format(feature_package_name, feature_name) for feature_name in self.feature_names[feature_package_name]])
                         self._dump_features(feature_package_name, self.vectorized_features[feature_package_name], self.feature_names[feature_package_name])
                         
                 else: # for feature packages which return one list for feature package name
                     vectorizer = VectorizerFrequency_sklearn(vectorizer=vectorizers[feature_config['name']])
                     self.vectorized_features[feature_config['name']] = vectorizer.vectorize([doc[feature] for doc in analysis[feature_config['name']]])
-                    self.feature_names[feature_config['name']] = vectorizer.vectorizer.get_feature_names()
+                    self.feature_names[feature_config['name']] = vectorizer.vectorizer.get_feature_names_out()
                     self.feature_names_list.extend(['{}_{}'.format(feature_config['name'], feature_name) for feature_name in self.feature_names[feature_config['name']]])
                     self._dump_features(feature_config['name'], self.vectorized_features[feature_config['name']], self.feature_names[feature_config['name']])
                     
             else: # VectorizerDict_sklearn
                 vectorizer = VectorizerDict_sklearn(vectorizer=vectorizers[feature_config['name']])
                 self.vectorized_features[feature_config['name']] = vectorizer.vectorize(analysis[feature_config['name']])
-                self.feature_names[feature_config['name']] = vectorizer.vectorizer.get_feature_names()
+                self.feature_names[feature_config['name']] = vectorizer.vectorizer.get_feature_names_out()
                 self.feature_names_list.extend(['{}_{}'.format(feature_config['name'], feature_name) for feature_name in self.feature_names[feature_config['name']]])
                 self._dump_features(feature_config['name'], self.vectorized_features[feature_config['name']], self.feature_names[feature_config['name']])
         return self.vectorized_features
